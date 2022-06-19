@@ -1,0 +1,20 @@
+<h3 class="title">Flight Details</h3>
+<div class="container">
+  <div class="box">
+    <p><%= @booking.flight.flight_day.strftime("%d-%m-%y %I:%M") %></p>
+    <p>Departure Airport: <% @da = Airport.find_by(id: @booking.flight.departure_airport_id) %> <%= @da.airport_code %> </p>
+    <p>Arrival Airport: <% @aa = Airport.find_by(id: @booking.flight.arrival_airport_id) %> <%= @aa.airport_code %> </p>
+    <p>Flight Duration In Hours: <%= @booking.flight.flight_duration %> </p>
+  </div>
+  <div class="columns">
+    <% @booking.passengers.each do |p| %>
+      <div class="column card">
+        <tr>
+          <td><%= p.name %></td>
+          <td><%= p.email %></td>
+        </tr>
+      </div>
+    <% end %>
+    <%= link_to "home", root_path, class:"button is-link is-primary" %>
+  </div>
+</div>

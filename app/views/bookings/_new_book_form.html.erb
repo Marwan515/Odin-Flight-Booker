@@ -1,0 +1,30 @@
+<%= form_with model: @booking, local: true do |f| %>
+  <div class="section">
+    <h3 class="subtitle is-3">Enter Each Passengers Details</h3>
+    <%= f.fields_for :passengers do |pf| %>
+      <div class="box">
+        <div class="field">
+          <label class="label">Name</label>
+          <div class="control">
+            <%= pf.text_field :name, required: true, class:"input", placeholder: "Name" %>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control">
+            <%= pf.text_field :email, required: true, class:"input", placeholder: "example@mail.com Your Email:" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <%= f.hidden_field :flight_id, :value => params[:flight] %>
+    <div class="field is-grouped is-pulled-right">
+      <div class="control">
+        <%= f.submit "Book", class:"button is-dark is-medium" %>
+      </div>
+      <div class="control">
+        <%= link_to "Cancel", root_path, class:"button is-danger is-medium" %>
+      </div>
+    </div>
+  </div>
+<% end %>

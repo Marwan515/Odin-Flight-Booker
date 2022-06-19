@@ -1,0 +1,25 @@
+<% if @available_flights.any? %>
+  <%= form_with(url: "/bookings/new", method: "get" ) do |b| %>
+    <div class="column columns">
+        <% @available_flights.each do |f| %>
+          <div class="column box bgrd columns is-flex-direction-row is-justify-content-space-between">          
+            <p>Departure Airport: <% @da = Airport.find_by(id: f.departure_airport_id) %> <%= @da.airport_code %> </p>
+            <p>Arrival Airport: <% @aa = Airport.find_by(id: f.arrival_airport_id) %> <%= @aa.airport_code %> </p>
+            <p>Flight Duration In Hours: <%= f.flight_duration %> </p>
+            <p>Flight Date: <%= f.flight_day.strftime("%d-%m-%y %I:%M") %> </p>
+            <div class="control">
+              <div class="radio">
+                <%= radio_button_tag(:flight, f.id) %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+    </div>
+    <%= b.hidden_field :passengers_count, :value => params[:passengers_count] %>
+    <div class="field">
+      <div class="control">
+        <%= b.submit "Select", class:"button is-link" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

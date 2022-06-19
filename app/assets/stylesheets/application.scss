@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+ @import "bulma";
+
+ .bgbk {
+     background-color: black;
+ }
+
+ .bgrd {
+     background-color: red;
+     color: white;
+ }
+
+ html {
+     background-image: url("airp.jpg");
+ }
