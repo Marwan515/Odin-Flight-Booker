@@ -11,9 +11,10 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     if @booking.save
       flash.notice = "Booking Confirmed"
-      redirect_to @booking
+      redirect_to booking_url(@booking), notice: "Booking Confirmed"
     else
-      flash.alert = "Not Booked"
+      flash.alert = "Error"
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -24,6 +25,6 @@ class BookingsController < ApplicationController
   private
     
     def booking_params
-      params.require(:booking).permit(:flight_id, passengers_attributes: [:id, :name, :email])
+      params.require(:booking).permit(:flight_id, passengers_attributes: [:name, :email])
     end
 end

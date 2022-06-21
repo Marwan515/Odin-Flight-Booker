@@ -8,8 +8,6 @@ class FlightsController < ApplicationController
     @passen = [1, 2, 3, 4]
     if params[:depart].present? && params[:arrive].present? && params[:passengers_count].present? && params[:date].present?
       @available_flights = @flight.where(departure_airport_id: params[:depart], arrival_airport_id: params[:arrive], flight_day: params[:date] )
-    elsif params[:depart].nil? || params[:arrive].nil? || params[:passengers_count].nil? || params[:date].nil?
-      flash.alert = "Missing Some Value"
     end
   end
 

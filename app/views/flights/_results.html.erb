@@ -2,7 +2,7 @@
   <%= form_with(url: "/bookings/new", method: "get" ) do |b| %>
     <div class="column columns">
         <% @available_flights.each do |f| %>
-          <div class="column box bgrd columns is-flex-direction-row is-justify-content-space-between">          
+          <div class="column box has-background-grey-light columns is-flex-direction-row is-justify-content-space-between">          
             <p>Departure Airport: <% @da = Airport.find_by(id: f.departure_airport_id) %> <%= @da.airport_code %> </p>
             <p>Arrival Airport: <% @aa = Airport.find_by(id: f.arrival_airport_id) %> <%= @aa.airport_code %> </p>
             <p>Flight Duration In Hours: <%= f.flight_duration %> </p>
