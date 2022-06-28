@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thanks For Flying With Us Oding Airlines</h1>
+    <h3><% @booked.passengers.each do |p| %>
+          <%= p.name %>
+        <% end %>
+     Your Flight Is Confrimed</h3>
+  </body>
+</html>
